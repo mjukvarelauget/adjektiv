@@ -28,7 +28,7 @@ class AdjektivGenerator extends HTMLElement {
   setupDOM(){
     this.outputElement = this.querySelector('.output')
   }
-  
+
   setupListerners() {
     
   }
@@ -55,7 +55,7 @@ class AdjektivGenerator extends HTMLElement {
     if(name === "seed") {
       let seedAsInt = parseInt(newValue);
       if(isNaN(seedAsInt)) {
-	this.setAttribute('seed', 0);
+        this.setAttribute('seed', 0);
       }
     }
 
