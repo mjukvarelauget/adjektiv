@@ -5,7 +5,7 @@ import REPLACEMENTS from "./adjectives.js"
  */
 export function replaceAdjectives(input, seed) {
   const random = mulberry32(+seed);
-
+  
   // Build a happy little trie
   const trie = {};
   for(const code in REPLACEMENTS) {
@@ -44,9 +44,10 @@ export function replaceAdjectives(input, seed) {
 
     if (seen == found+1) //It was not a valid replacement, put the % back in the output
       output += "%";
-    else {
+    else {      
       const code = input.slice(found+1, seen);
       const replacements = REPLACEMENTS[code];
+      
       output += replacements[random() % replacements.length];
     }
   }
