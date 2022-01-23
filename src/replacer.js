@@ -42,7 +42,7 @@ export function replaceAdjectives(input, seed) {
         seen = headChar;
     }
 
-    if (seen == headChar) //It was not a valid replacement, put the % back in the output
+    if (seen == found+1) //It was not a valid replacement, put the % back in the output
       output += "%";
     else {
       const code = input.slice(found+1, seen);
