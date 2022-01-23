@@ -1,50 +1,48 @@
 
-REPLACEMENTS = {
-    "%a": ["grønn"],
-    "%at": ["grønt"],
-    "%an": ["grønne"],
-    "%ar": ["grønne"],
-    "%akomp": ["grønnere"],
-    "%asup": ["grønnest"],
-    "%ansup": ["grønneste"],
+let REPLACEMENTS = {
+    "a": [],
+    "at": [],
+    "an": [],
+    "ar": [],
+    "akomp": [],
+    "asup": [],
+    "ansup": [],
 };
+
+// t, e, e, ere, est, este
+let a1 = ['rød', 'grønn', 'gul'];
+
+// t, e, e, mer, mest, mest -e
+let a1_long = ['abnorm'];
+
+let a2 = [];
+
+// -, e, e, mer, mest, mest -e
+let a2_long = ['abrupt', 'absolutt', 'absolutistisk', 'adelig'];
+
+let a3 = [];
+
+// -, -, -, mer, mest, mest -e
+let a3_long = ['advarende'];
+
+let categorires = {
+  a1: a1, a1_long:a1_long, a2: a2, a2_long: a2_long, a3: a3, a3_long: a3_long
+};
+
+export function generateReplacements() {
+  for(key in category) {
+    console.log(key)
+  }
+}
+
 // komparativ er det samme enten det er bestemt eller ikke!
 REPLACEMENT["%ankomp"] = REPLACEMENT["%akomp"];
-
-export function addSimpleAdjective(base) {
-    const neutrum = base.endsWith("t") ? base : base+"t";
-    REPLACEMENTS["%a"].append(base);
-    REPLACEMENTS["%at"].append(neutrum);
-    REPLACEMENTS["%an"].append(base+"e");
-    REPLACEMENTS["%ar"].append(base+"e");
-    REPLACEMENTS["%akomp"].append(base+"ere");
-    REPLACEMENTS["%asup"].append(base+"est");
-    REPLACEMENTS["%ansup"].append(base+"este");
-}
-
-export function addLongAdjective(base) {
-    const neutrum = base.endsWith("t") ? base : base+"t";
-    REPLACEMENTS["%a"].append(base);
-    REPLACEMENTS["%at"].append(neutrum);
-    REPLACEMENTS["%an"].append(base+"e");
-    REPLACEMENTS["%ar"].append(base+"e");
-    REPLACEMENTS["%akomp"].append("mer " + base);
-    REPLACEMENTS["%asup"].append("mest " + base);
-    REPLACEMENTS["%ansup"].append("mest " + base+"e");
-}
-
-// TODO call these from a list
-addSimpleAdjective("smart");
-addSimpleAdjective("lur");
-addLongAdjective("intelligent");
 
 /**
  * Takes in a string with adjective codes, and replaces them with correct adjectives
  */
 export function replaceAdjectives(input, seed) {
     const random = mulberry32(+seed);
-
-
 }
 
 // Our random generator
@@ -56,3 +54,5 @@ function mulberry32(a) {
       return ((t ^ t >>> 14) >>> 0) / 4294967296;
     }
 }
+
+export default REPLACEMENTS;
