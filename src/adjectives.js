@@ -1,4 +1,3 @@
-
 let REPLACEMENTS = {
     "a": [],
     "at": [],
@@ -9,8 +8,12 @@ let REPLACEMENTS = {
     "ansup": [],
 };
 
+let long_conj_end = ["mer", "mest", "mest -e"];
+
 // t, e, e, ere, est, este
-let a1 = ['rød', 'grønn', 'gul'];
+let a1_nom_end = ["t", "e", "e"];
+let a1_conj_end = ["ere", "est", "este"];
+let a1_list = ['rød', 'grønn', 'gul'];
 
 // t, e, e, mer, mest, mest -e
 let a1_long = ['abnorm'];
@@ -25,34 +28,41 @@ let a3 = [];
 // -, -, -, mer, mest, mest -e
 let a3_long = ['advarende'];
 
-let categorires = {
-  a1: a1, a1_long:a1_long, a2: a2, a2_long: a2_long, a3: a3, a3_long: a3_long
-};
-
-export function generateReplacements() {
-  for(key in category) {
-    console.log(key)
+let categories = {
+  a1: {
+    list: a1_list, nom_end: a1_nom_end, conj_end: a1_conj_end
   }
 }
 
-// komparativ er det samme enten det er bestemt eller ikke!
-REPLACEMENT["%ankomp"] = REPLACEMENT["%akomp"];
+function generateReplacements(categories) {
+  for(let key in categories) {
+    let list = categories[key]["list"];
+    let nom_end = categories[key]["nom_end"];
+    let conj_end = categories[key]["conj_end"];
 
-/**
- * Takes in a string with adjective codes, and replaces them with correct adjectives
- */
-export function replaceAdjectives(input, seed) {
-    const random = mulberry32(+seed);
-}
+    for(let word of list) {
+      // nominative
+      REPLACEMENTS["a"].push(word);
+      REPLACEMENTS["at"].push(word + nom_end[0]);
+      REPLACEMENTS["an"].push(word + nom_end[1]);
+      REPLACEMENTS["ar"].push(word + nom_end[2]);
 
-// Our random generator
-function mulberry32(a) {
-    return function() {
-      var t = a += 0x6D2B79F5;
-      t = Math.imul(t ^ t >>> 15, t | 1);
-      t ^= t + Math.imul(t ^ t >>> 7, t | 61);
-      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+      // Conjugations
+      let prefix, postfix;
+      [prefix, postfix] = conj_end[2].split('-');
+      REPLACEMENTS["akomp"].push(word + conj_end[0]);
+      REPLACEMENTS["asup"].push(word + conj_end[1]);
+      REPLACEMENTS["ansup"].push(prefix + word + postfix);
     }
+  }
 }
+
+// Generate replacements before exporting
+generateReplacements(categories);
+
+// komparativ er det samme enten det er bestemt eller ikke!
+REPLACEMENTS["ankomp"] = REPLACEMENTS["akomp"];
+
+console.log(REPLACEMENTS)
 
 export default REPLACEMENTS;

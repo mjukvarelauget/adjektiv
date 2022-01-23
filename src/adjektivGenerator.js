@@ -1,3 +1,4 @@
+import { replaceAdjectives } from "./replacer.js"
 export { AdjektivGenerator }
 
 /*
@@ -24,6 +25,8 @@ class AdjektivGenerator extends HTMLElement {
     if(!this.hasAttribute('seed')) {
       this.setAttribute('seed', '0'); 
     }
+
+    this.generated = null; // To be displayed
   }
   setupDOM(){
     this.outputElement = this.querySelector('.output')
@@ -33,7 +36,10 @@ class AdjektivGenerator extends HTMLElement {
     
   }
   render(){
-    this.outputElement.textContent = this.getAttribute('tekst');
+    let input = this.getAttribute('tekst');
+    let seed = this.getAttribute('seed');
+    this.generated = replaceAdjectives(input, seed);
+    this.outputElement.textContent = this.generated;
   }
 
   // **** BUILT-INS ****
