@@ -1,0 +1,22 @@
+"Norske adjektiv bøyes i kjønn, tall og bestemthet, og de gradbøyes."
+
+
+Det var en gang <adjektiv>
+
+<adjektiv> := %a<modifiers>
+<modifiers> := <antall> | <kjønn> | <bestemthet><grad>
+<antall> := r | ε 
+<kjønn> := t | ε
+<bestemthet> := n
+<grad> := ε | komp | sup 
+
+
+Eksempler
+Grønn:
+%a -> han/hunnkjønn entall ubestemt nom = grønn
+%at -> intetkjønn entall ubestemt nom = grønt
+%an -> bestemt form entall nom = grønne
+%ar -> flertall nom = grønne
+%akomp -> komparativ = grønnere
+%asup -> superlativ = grønnest
+%ansup -> bestemt superlativ = grønneste
