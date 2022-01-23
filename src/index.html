@@ -4,13 +4,33 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Adjektiv</title>
-        <meta name="description" content="">
+        <meta name="description" content="Lag og fyll ut din egen adjektivhistorie">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
-        <!-- Place favicon.ico in the root directory -->
+	<link rel="stylesheet" href="./index.css"></link>
+
+	<script type="module" src="./adjektivHistorieGenerator.js"></script>
+	<script type="module" src="./adjektivHistorieEditor.js"></script>
+	<script type="module" src="./adjektivGenerator.js"></script>
     </head>
     <body>
-
+      <h1> Adjektivhistoriegenerator </h1>
+      <adjektiv-historie-generator>
+	<button class="generate">Generer adjektiv</button>
+	<div class="input-output">
+	  <div>
+	    <h2> Input </h2>
+	    <adjektiv-historie-editor>
+	      <textarea class="input"></textarea>
+	    </adjektiv-historie-editor>
+	  </div>
+	  <div>
+	    <h2> Output </h2>
+	    <adjektiv-generator tekst="" seed="">
+	      <p class="output"></p>
+	    </adjektiv-generator>
+	  </div>
+	</div>
+      </adjektiv-historie-generator>
     </body>
 </html>
