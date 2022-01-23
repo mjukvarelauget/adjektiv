@@ -10,8 +10,11 @@ export function replaceAdjectives(input, seed) {
   const trie = {};
   for(const code in REPLACEMENTS) {
     let head = trie;
-    for(const char of code)
-      trie[char] = (head = (trie[char] ?? {}));
+    for(const char of code) {
+      const next = head[char] ?? {};
+      head[char] = next;
+      head = next;
+    }
     head.replacement = REPLACEMENTS[code];
   }
 
