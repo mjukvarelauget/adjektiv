@@ -50,7 +50,6 @@ export function replaceAdjectives(input, seed) {
     else {      
       const code = input.slice(found+1, seen);
       const replacements = REPLACEMENTS[code];
-      
       output += replacements[random() % replacements.length];
     }
   }

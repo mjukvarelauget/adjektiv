@@ -7,13 +7,12 @@ Det var en gang <adjektiv>
             | <kjønn>
             | <antall>
             | <bestemthet>
-            | <bestemthet><grad>
             | <grad>
             | ε
 <antall> := r
 <kjønn> := t
 <bestemthet> := n
-<grad> := komp | sup
+<grad> := ere | est | este
 
 
 Eksempler
@@ -22,7 +21,6 @@ Grønn:
 %at -> intetkjønn entall ubestemt nom = grønt
 %an -> bestemt form entall nom = grønne
 %ar -> flertall nom = grønne
-%akomp -> ubestemt komparativ = grønnere
-%ankomp -> bestemt komparativ = grønnere
-%asup -> superlativ = grønnest
-%ansup -> bestemt superlativ = grønneste
+%aere -> ubestemt komparativ = grønnere
+%aest -> superlativ = grønnest
+%aeste -> bestemt superlativ = grønneste

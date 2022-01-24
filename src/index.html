@@ -7,30 +7,35 @@
         <meta name="description" content="Lag og fyll ut din egen adjektivhistorie">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" href="./index.css"></link>
+        <link rel="stylesheet" href="./index.css"></link>
 
-	<script type="module" src="./adjektivHistorieGenerator.js"></script>
-	<script type="module" src="./adjektivHistorieEditor.js"></script>
-	<script type="module" src="./adjektivGenerator.js"></script>
+        <script type="module" src="./adjektivHistorieGenerator.js"></script>
+        <script type="module" src="./adjektivHistorieEditor.js"></script>
+        <script type="module" src="./adjektivGenerator.js"></script>
     </head>
     <body>
       <h1> Adjektivhistoriegenerator </h1>
       <adjektiv-historie-generator>
-	<button class="generate">Generer adjektiv</button>
-	<div class="input-output">
-	  <div>
-	    <h2> Input </h2>
-	    <adjektiv-historie-editor>
-	      <textarea class="input"></textarea>
-	    </adjektiv-historie-editor>
-	  </div>
-	  <div>
-	    <h2> Output </h2>
-	    <adjektiv-generator tekst="" seed="">
-	      <p class="output"></p>
-	    </adjektiv-generator>
-	  </div>
-	</div>
+        <button class="generate">Generer adjektiv</button>
+        <div class="input-output">
+          <div>
+            <h2> Input </h2>
+            <adjektiv-historie-editor>
+              <textarea class="input">
+                Det var en gang en %a bil og et %at hus.
+                De var veldig %ar.
+                Det %an med bilen var at den var %aere enn huset.
+                Huset var likevel %aest. Og det dessidert %aeste huset i byen.
+              </textarea>
+            </adjektiv-historie-editor>
+          </div>
+          <div>
+            <h2> Output </h2>
+            <adjektiv-generator tekst="" seed="">
+              <p class="output"></p>
+            </adjektiv-generator>
+          </div>
+        </div>
       </adjektiv-historie-generator>
     </body>
 </html>

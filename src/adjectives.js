@@ -3,9 +3,9 @@ let REPLACEMENTS = {
     "at": [],
     "an": [],
     "ar": [],
-    "akomp": [],
-    "asup": [],
-    "ansup": [],
+    "aere": [],
+    "aest": [],
+    "aeste": [],
 };
 
 
@@ -76,14 +76,14 @@ function generateReplacements(categories) {
 
       // Hard code for now
       if(isLong) {
-	REPLACEMENTS["akomp"].push(conj_end[0].replace('_', word));
-	REPLACEMENTS["asup"].push(conj_end[1].replace('_', word));
-	REPLACEMENTS["ansup"].push(conj_end[2].replace('_', word));
+        REPLACEMENTS["aere"].push(conj_end[0].replace('_', word));
+        REPLACEMENTS["aest"].push(conj_end[1].replace('_', word));
+        REPLACEMENTS["aeste"].push(conj_end[2].replace('_', word));
       }
       else {
-	REPLACEMENTS["akomp"].push(word + conj_end[0]);
-	REPLACEMENTS["asup"].push(word + conj_end[1]);
-	REPLACEMENTS["ansup"].push(word);
+        REPLACEMENTS["aere"].push(word + conj_end[0]);
+        REPLACEMENTS["aest"].push(word + conj_end[1]);
+        REPLACEMENTS["aeste"].push(word + conj_end[2]);
       }
     }
   }
@@ -91,9 +91,6 @@ function generateReplacements(categories) {
 
 // Generate replacements before exporting
 generateReplacements(categories);
-
-// komparativ er det samme enten det er bestemt eller ikke!
-REPLACEMENTS["ankomp"] = REPLACEMENTS["akomp"];
 
 console.log(REPLACEMENTS)
 
